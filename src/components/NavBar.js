@@ -2,6 +2,27 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export class NavBar extends Component {
+  // query = "";
+  state = {
+    search: "",
+  };
+
+  handleDefaultSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  // constructor() {
+  //   super();
+  // }
+
+  handleOnChange = (event) => {
+    this.setState({ search: event.target.value });
+  };
+
+  searchBtnHandler = () => {
+    this.props.newsQuery(this.state.search);
+  };
+
   render() {
     return (
       <>
@@ -30,51 +51,51 @@ export class NavBar extends Component {
                   </Link>
                 </li>
 
-                <li class="nav-item dropdown">
+                <li className="nav-item dropdown">
                   <Link
-                    class="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle"
                     to="/"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Category
                   </Link>
-                  <ul class="dropdown-menu">
+                  <ul className="dropdown-menu">
                     <li>
-                      <Link class="dropdown-item" to="/business">
+                      <Link className="dropdown-item" to="/business">
                         Business
                       </Link>
                     </li>
                     <li>
-                      <Link class="dropdown-item" to="/entertainment">
+                      <Link className="dropdown-item" to="/entertainment">
                         Entertainment
                       </Link>
                     </li>
                     <li>
-                      <Link class="dropdown-item" to="/general">
+                      <Link className="dropdown-item" to="/general">
                         General
                       </Link>
                     </li>
                     <li>
-                      <Link class="dropdown-item" to="/health">
+                      <Link className="dropdown-item" to="/health">
                         Health
                       </Link>
                     </li>
                     <li>
-                      <Link class="dropdown-item" to="/science">
+                      <Link className="dropdown-item" to="/science">
                         Science
                       </Link>
                     </li>
                     <li>
-                      <Link class="dropdown-item" to="/sports">
+                      <Link className="dropdown-item" to="/sports">
                         Sports
                       </Link>
                     </li>
                     <li>
-                      <hr class="dropdown-divider" />
+                      <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <Link class="dropdown-item" to="/technology">
+                      <Link className="dropdown-item" to="/technology">
                         Technology
                       </Link>
                     </li>
@@ -86,6 +107,24 @@ export class NavBar extends Component {
                   </Link>
                 </li>
               </ul>
+              <form
+                className="d-flex"
+                role="search"
+                onSubmit={this.handleDefaultSubmit}>
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  onChange={this.handleOnChange}
+                />
+                <button
+                  className="btn btn-outline-success"
+                  type="submit"
+                  onClick={this.searchBtnHandler}>
+                  Search
+                </button>
+              </form>
             </div>
           </div>
         </nav>

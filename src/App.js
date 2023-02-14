@@ -5,13 +5,35 @@ import News from "./components/News";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default class App extends Component {
-  // 6ee850597cbd431c94a2012b1101c95f -- News Api Key
+  // API_TOKEN = "6ee850597cbd431c94a2012b1101c95f";
+  API_TOKEN = "467946ad2bff40659bd5560046164870";
+  pageSize = 8;
+
+  state = {
+    query: "",
+  };
+
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     query: "",
+  //   };
+  // }
+
+  componentDidUpdate() {
+    // console.log("Updated");
+    console.log(this.state.query);
+  }
+
+  newsQuery = (str) => {
+    console.log(str);
+    this.setState({ query: str });
+  };
 
   render() {
     return (
       <Router>
-        <NavBar title="NewsMonkey" />
-
+        <NavBar title="NewsMonkey" newsQuery={this.newsQuery} />
         <Routes>
           <Route
             exact
@@ -20,24 +42,11 @@ export default class App extends Component {
               <News
                 key="general"
                 headline="NewsMonkey Top Headlines"
-                pageSize="8"
+                pageSize={this.pageSize}
                 country="in"
-                token="6ee850597cbd431c94a2012b1101c95f"
+                token={this.API_TOKEN}
                 category="general"
-              />
-            }
-          />
-          <Route
-            exact
-            path="/general"
-            element={
-              <News
-                key="general"
-                headline="NewsMonkey Top Headlines"
-                pageSize="8"
-                country="in"
-                token="6ee850597cbd431c94a2012b1101c95f"
-                category="general"
+                query={this.state.query}
               />
             }
           />
@@ -48,10 +57,11 @@ export default class App extends Component {
               <News
                 key="sports"
                 headline="NewsMonkey Top Headlines"
-                pageSize="8"
+                pageSize={this.pageSize}
                 country="in"
-                token="6ee850597cbd431c94a2012b1101c95f"
+                token={this.API_TOKEN}
                 category="sports"
+                query={this.state.query}
               />
             }
           />
@@ -62,10 +72,11 @@ export default class App extends Component {
               <News
                 key="business"
                 headline="NewsMonkey Top Headlines"
-                pageSize="8"
+                pageSize={this.pageSize}
                 country="in"
-                token="6ee850597cbd431c94a2012b1101c95f"
+                token={this.API_TOKEN}
                 category="business"
+                query={this.state.query}
               />
             }
           />
@@ -76,10 +87,11 @@ export default class App extends Component {
               <News
                 key="entertainment"
                 headline="NewsMonkey Top Headlines"
-                pageSize="8"
+                pageSize={this.pageSize}
                 country="in"
-                token="6ee850597cbd431c94a2012b1101c95f"
+                token={this.API_TOKEN}
                 category="entertainment"
+                query={this.state.query}
               />
             }
           />
@@ -90,10 +102,11 @@ export default class App extends Component {
               <News
                 key="health"
                 headline="NewsMonkey Top Headlines"
-                pageSize="8"
+                pageSize={this.pageSize}
                 country="in"
-                token="6ee850597cbd431c94a2012b1101c95f"
+                token={this.API_TOKEN}
                 category="health"
+                query={this.state.query}
               />
             }
           />
@@ -104,10 +117,11 @@ export default class App extends Component {
               <News
                 key="science"
                 headline="NewsMonkey Top Headlines"
-                pageSize="8"
+                pageSize={this.pageSize}
                 country="in"
-                token="6ee850597cbd431c94a2012b1101c95f"
+                token={this.API_TOKEN}
                 category="science"
+                query={this.state.query}
               />
             }
           />
@@ -118,10 +132,11 @@ export default class App extends Component {
               <News
                 key="technology"
                 headline="NewsMonkey Top Headlines"
-                pageSize="8"
+                pageSize={this.pageSize}
                 country="in"
-                token="6ee850597cbd431c94a2012b1101c95f"
+                token={this.API_TOKEN}
                 category="technology"
+                query={this.state.query}
               />
             }
           />
